@@ -1,0 +1,4 @@
+# Root — Conversa AI
+node_modules/
+.env
+*.log

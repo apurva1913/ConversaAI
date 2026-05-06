@@ -1,0 +1,8 @@
+# Conversa AI — Backend
+node_modules/
+.env
+.env.example
+uploads/*
+!uploads/.gitkeep
+*.log
+npm-debug.log*
