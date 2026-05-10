@@ -389,7 +389,14 @@ export default function ChatPage() {
                           <div className="bubble-text" dangerouslySetInnerHTML={{ __html: renderMd(msg.content) }} />
                           {msg.rpaData && (
                             <div style={{ marginTop: 12 }}>
-                              <RPABrowser task="RPA Bot is executing automation..." />
+                              <RPABrowser
+                                task="RPA Bot is executing automation..."
+                                query={(() => {
+                                  const idx = messages.findIndex(m => m.id === msg.id);
+                                  const prev = messages.slice(0, idx).reverse().find(m => m.role === 'user');
+                                  return prev?.content || '';
+                                })()}
+                              />
                               <RPADataViewer data={msg.rpaData} />
                             </div>
                           )}
