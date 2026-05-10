@@ -27,7 +27,7 @@ export default function UserLayout() {
   };
 
   return (
-    <div className="layout-root">
+    <div className="app-layout">
       <aside className="sidebar user-sidebar">
         <div className="sidebar-header">
           <div className="sidebar-logo">

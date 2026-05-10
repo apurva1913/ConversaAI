@@ -9,7 +9,7 @@ const ADMIN_NAV = [
 
 export default function AdminLayout() {
   return (
-    <div className="layout-root">
+    <div className="app-layout">
       <aside className="sidebar admin-sidebar" style={{ borderRightColor: 'var(--accent-glow)' }}>
         <div className="sidebar-header">
           <div className="sidebar-logo admin-logo">

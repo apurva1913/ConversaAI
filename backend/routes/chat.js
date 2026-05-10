@@ -125,8 +125,8 @@ router.post('/', async (req, res) => {
 
     // ── Record analytics ─────────────────────────────────────────────────────
     const totalTime = Date.now() - startTime;
-    const subtype = result.actionData
-      ? debugLog.agentChain.find(s => s.agent === 'action')?.task
+    const subtype = result.responseType === 'action'
+      ? Object.values(result.agentResults).find(r => r.type === 'action')?.actionName
       : null;
     recordQuery(result.responseType, subtype, totalTime, true);
 

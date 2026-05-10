@@ -18,6 +18,7 @@ import {
   registerSocketListener, unregisterSocketListener
 } from '../api/client';
 import DebugPanel from '../components/DebugPanel';
+import RPABrowser from '../components/RPABrowser';
 
 // ─────────────────────────────────────────────────────────
 //  Markdown renderer (sanitised)
@@ -386,7 +387,12 @@ export default function ChatPage() {
                       <div style={{ position: 'relative' }}>
                         <div className="bubble-body">
                           <div className="bubble-text" dangerouslySetInnerHTML={{ __html: renderMd(msg.content) }} />
-                          {msg.rpaData && <RPADataViewer data={msg.rpaData} />}
+                          {msg.rpaData && (
+                            <div style={{ marginTop: 12 }}>
+                              <RPABrowser task="RPA Bot is executing automation..." />
+                              <RPADataViewer data={msg.rpaData} />
+                            </div>
+                          )}
                         </div>
                         {!msg.streaming && <VoiceButton text={msg.content} />}
                       </div>
@@ -463,7 +469,12 @@ export default function ChatPage() {
         </div>
       </div>
 
-      <DebugPanel log={debugLog} />
+      <DebugPanel 
+        log={debugLog} 
+        sessionId={sessionId} 
+        sessionStatus={sessionStatus} 
+        messages={messages} 
+      />
     </div>
   );
 }
